@@ -1,2 +1,2 @@
-# LovcenPress
+LovćenPress
 Portal za vijesti
