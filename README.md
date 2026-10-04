@@ -1,2 +1,1 @@
-LovćenPress
-Portal za vijesti
+Lovćen Press
