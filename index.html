@@ -3,175 +3,1508 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lovćen Press</title>
+
+  <title>Lovćen Press — Vijesti iz Crne Gore i svijeta</title>
+
+  <meta name="description" content="Lovćen Press — savremeni crnogorski portal za vijesti iz Crne Gore, regiona i svijeta.">
+  <meta name="theme-color" content="#111827">
 
   <style>
+    /* =========================================================
+       LOVĆEN PRESS
+       MOBILE-FIRST NEWS PORTAL
+       ========================================================= */
+
+    :root {
+      --dark: #111827;
+      --dark-2: #1f2937;
+      --dark-3: #374151;
+
+      --accent: #b88945;
+      --accent-dark: #946d34;
+
+      --bg: #f5f6f8;
+      --white: #ffffff;
+      --text: #18202b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+
+      --max-width: 1180px;
+      --radius: 12px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
+    html {
+      scroll-behavior: smooth;
     }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================================================
+       TOP BAR
+       ========================================================= */
+
+    .top-bar {
+      background: #0c1220;
+      color: #d1d5db;
+      font-size: 13px;
+    }
+
+    .top-bar-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-bar span:last-child {
+      display: none;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
 
     header {
-      background: #111;
+      background: var(--dark);
       color: white;
-      padding: 22px 15px;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 18px rgba(0,0,0,0.15);
     }
 
-    header h1 {
-      font-size: 32px;
+    .header-main {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    /* LOGO PLACEHOLDER */
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .logo-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-symbol {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      line-height: 1.05;
+    }
+
+    .logo-name {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-subtitle {
+      font-size: 9px;
+      color: #9ca3af;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* DESKTOP NAV */
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .desktop-nav a {
+      color: #e5e7eb;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 7px;
+      transition: 0.2s;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HEADER ACTIONS */
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .icon-button {
+      border: 0;
+      background: #1f2937;
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .menu-button {
+      display: block;
+    }
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    .mobile-menu {
+      display: none;
+      background: #172033;
+      border-top: 1px solid #2d3748;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 18px;
+      color: white;
+      border-bottom: 1px solid #263247;
+      font-weight: 600;
+    }
+
+    .mobile-menu a:hover {
+      background: #202b40;
+      color: var(--accent);
+    }
+
+    /* =========================================================
+       MAIN
+       ========================================================= */
+
+    main {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 16px;
+    }
+
+    /* =========================================================
+       ADVERTISEMENT
+       ========================================================= */
+
+    .ad {
+      background: #e9ebef;
+      border: 1px dashed #c6cbd3;
+      min-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #8a919c;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+      border-radius: 8px;
+    }
+
+    .ad-small {
+      min-height: 70px;
+    }
+
+    .ad-box {
+      min-height: 250px;
+    }
+
+    /* =========================================================
+       SECTION TITLES
+       ========================================================= */
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 25px 0 13px;
+      border-bottom: 2px solid var(--dark);
+      padding-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: 20px;
+      font-family: Georgia, serif;
+    }
+
+    .section-heading a {
+      font-size: 12px;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(15,23,42,0.07);
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      height: 230px;
+      background:
+        linear-gradient(135deg, #374151, #111827);
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      position: relative;
+    }
+
+    .hero-image::after {
+      content: "LOVĆEN PRESS";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      padding: 6px 9px;
+      border-radius: 5px;
+      font-size: 9px;
       letter-spacing: 1px;
     }
 
-    header p {
-      margin-top: 6px;
-      color: #bbb;
-    }
-
-    nav {
-      background: #222;
-      padding: 12px;
-      text-align: center;
-    }
-
-    nav a {
+    .hero-label {
+      background: var(--accent);
       color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-radius: 4px;
+      position: relative;
+      z-index: 2;
     }
 
-    .hero {
-      background: white;
-      padding: 45px 20px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
+    .hero-content {
+      padding: 18px;
     }
 
-    .hero h2 {
-      font-size: 30px;
-      margin-bottom: 12px;
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      line-height: 1.12;
+      margin-bottom: 10px;
     }
 
     .hero p {
-      color: #666;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      color: #8a919c;
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       LATEST NEWS
+       ========================================================= */
+
+    .latest-list {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(15,23,42,0.06);
+    }
+
+    .latest-item {
+      display: block;
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .latest-item:last-child {
+      border-bottom: 0;
+    }
+
+    .latest-category {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .latest-item h3 {
+      font-family: Georgia, serif;
       font-size: 17px;
+      line-height: 1.25;
+      margin-bottom: 4px;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 15px;
+    .latest-item time {
+      font-size: 10px;
+      color: #9ca3af;
     }
 
-    .section-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-      border-left: 5px solid #111;
-      padding-left: 10px;
-    }
+    /* =========================================================
+       NEWS GRID
+       ========================================================= */
 
-    .news {
+    .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .card {
       background: white;
-      padding: 22px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(15,23,42,0.06);
     }
 
-    .card span {
-      font-size: 13px;
-      color: #888;
+    .card-image {
+      height: 180px;
+      background: linear-gradient(135deg, #d1d5db, #6b7280);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+    }
+
+    .card-category {
+      background: var(--dark);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 5px 7px;
+      border-radius: 4px;
+    }
+
+    .card-content {
+      padding: 14px;
     }
 
     .card h3 {
-      margin: 10px 0;
-      font-size: 20px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      line-height: 1.25;
+      margin-bottom: 7px;
     }
 
     .card p {
-      color: #666;
-      line-height: 1.5;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    footer {
-      margin-top: 50px;
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 25px 15px;
+    /* =========================================================
+       CATEGORY BLOCKS
+       ========================================================= */
+
+    .category-block {
+      margin-top: 25px;
     }
+
+    .category-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+      margin-bottom: 12px;
+    }
+
+    .category-title h2 {
+      font-family: Georgia, serif;
+      font-size: 21px;
+    }
+
+    .category-title a {
+      font-size: 11px;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       WORLD / SPORT CARDS
+       ========================================================= */
+
+    .horizontal-card {
+      display: flex;
+      gap: 12px;
+      background: white;
+      padding: 11px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 10px rgba(15,23,42,0.05);
+    }
+
+    .horizontal-image {
+      width: 110px;
+      height: 85px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #4b5563, #d1d5db);
+      border-radius: 7px;
+    }
+
+    .horizontal-card h3 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+
+    .horizontal-card p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
+
+    .sidebar {
+      margin-top: 25px;
+    }
+
+    .sidebar-box {
+      background: white;
+      padding: 15px;
+      border-radius: var(--radius);
+      margin-bottom: 15px;
+      box-shadow: 0 3px 15px rgba(15,23,42,0.06);
+    }
+
+    .sidebar-title {
+      font-family: Georgia, serif;
+      font-size: 19px;
+      border-bottom: 2px solid var(--dark);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-list a {
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: Georgia, serif;
+      font-size: 14px;
+    }
+
+    .sidebar-list a:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================================================
+       NEWSLETTER
+       ========================================================= */
+
+    .newsletter {
+      background: var(--dark);
+      color: white;
+      padding: 18px;
+      border-radius: var(--radius);
+      margin-top: 25px;
+    }
+
+    .newsletter h3 {
+      font-family: Georgia, serif;
+      margin-bottom: 6px;
+    }
+
+    .newsletter p {
+      color: #b8c0cd;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 6px;
+    }
+
+    .newsletter input {
+      min-width: 0;
+      flex: 1;
+      border: 0;
+      border-radius: 6px;
+      padding: 11px;
+      font-size: 13px;
+    }
+
+    .newsletter button {
+      border: 0;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      padding: 0 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      margin-top: 35px;
+      background: #0c1220;
+      color: #c5cad3;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 30px 16px;
+    }
+
+    .footer-brand {
+      margin-bottom: 20px;
+    }
+
+    .footer-brand h2 {
+      color: white;
+      font-family: Georgia, serif;
+      margin-bottom: 5px;
+    }
+
+    .footer-brand p {
+      font-size: 12px;
+      color: #8e97a5;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      border-top: 1px solid #252f40;
+      padding-top: 15px;
+      font-size: 11px;
+      color: #737d8d;
+    }
+
+    /* =========================================================
+       DESKTOP
+       ========================================================= */
+
+    @media (min-width: 760px) {
+
+      .top-bar span:last-child {
+        display: block;
+      }
+
+      .header-main {
+        padding: 15px 20px;
+      }
+
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .menu-button {
+        display: none;
+      }
+
+      .hero-image {
+        height: 360px;
+      }
+
+      .hero-content {
+        padding: 22px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-image {
+        height: 200px;
+      }
+
+      .content-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .sidebar {
+        margin-top: 25px;
+      }
+
+      .main-column .sidebar {
+        display: none;
+      }
+
+      .horizontal-card {
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (min-width: 1020px) {
+
+      main {
+        padding: 22px;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+      }
+
+      .hero-image {
+        height: 100%;
+        min-height: 380px;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
+  <!-- =======================================================
+       TOP BAR
+       ======================================================= -->
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span>Lovćen Press</span>
+      <span id="currentDate">Crna Gora • Vijesti • Svijet • Sport</span>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
   <header>
-    <h1>LOVĆEN PRESS</h1>
-    <p>Vijesti iz Crne Gore i regiona</p>
-  </header>
 
-  <nav>
-    <a href="#">Naslovna</a>
-    <a href="#">Vijesti</a>
-    <a href="#">Crna Gora</a>
-    <a href="#">Region</a>
-    <a href="#">Kontakt</a>
-  </nav>
+    <div class="header-main">
 
-  <section class="hero">
-    <h2>Dobrodošli na Lovćen Press</h2>
-    <p>Vaš novi portal za najnovije vijesti i informacije.</p>
-  </section>
+      <!-- LOGO -->
+      <a href="#" class="logo-area">
 
-  <main class="container">
-    <h2 class="section-title">Najnovije vijesti</h2>
+        <!--
+          OVDJE ĆEMO KASNIJE UBACITI TVOJ PRAVI LOGO.
+          Trenutni znak je samo privremeni.
+        -->
 
-    <div class="news">
+        <div class="logo-placeholder">
 
-      <article class="card">
-        <span>LOVĆEN PRESS • DANAS</span>
-        <h3>Uskoro najnovije vijesti</h3>
-        <p>
-          Lovćen Press donosi vam aktuelne informacije iz Crne Gore,
-          regiona i svijeta.
-        </p>
-      </article>
+          <div class="logo-symbol">
+            L
+          </div>
 
-      <article class="card">
-        <span>CRNA GORA</span>
-        <h3>Portal je zvanično pokrenut</h3>
-        <p>
-          Pratite Lovćen Press za nove priče, informacije i najvažnije događaje.
-        </p>
-      </article>
+          <div class="logo-text">
+            <div class="logo-name">
+              Lovćen Press
+            </div>
 
-      <article class="card">
-        <span>REGION</span>
-        <h3>Budite informisani</h3>
-        <p>
-          Na jednom mjestu donosimo vam pregled najvažnijih vijesti.
-        </p>
-      </article>
+            <div class="logo-subtitle">
+              Vijesti iz Crne Gore
+            </div>
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- DESKTOP MENU -->
+
+      <nav class="desktop-nav">
+
+        <a href="#">Naslovna</a>
+        <a href="#vijesti">Vijesti</a>
+        <a href="#crna-gora">Crna Gora</a>
+        <a href="#svijet">Svijet</a>
+        <a href="#sport">Sport</a>
+
+      </nav>
+
+
+      <!-- HEADER BUTTONS -->
+
+      <div class="header-actions">
+
+        <button class="icon-button" title="Pretraga" onclick="showSearch()">
+          🔍
+        </button>
+
+        <button
+          class="icon-button menu-button"
+          title="Meni"
+          onclick="toggleMenu()"
+          aria-label="Otvori meni">
+          ☰
+        </button>
+
+      </div>
 
     </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <nav class="mobile-menu" id="mobileMenu">
+
+      <a href="#" onclick="closeMenu()">Naslovna</a>
+
+      <a href="#vijesti" onclick="closeMenu()">Vijesti</a>
+
+      <a href="#crna-gora" onclick="closeMenu()">Crna Gora</a>
+
+      <a href="#svijet" onclick="closeMenu()">Svijet</a>
+
+      <a href="#sport" onclick="closeMenu()">Sport</a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
+
+  <main>
+
+
+    <!-- GORNJA REKLAMA -->
+
+    <div class="ad">
+      Reklamni prostor
+    </div>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <article class="hero">
+
+      <div class="hero-image">
+
+        <span class="hero-label">
+          Izdvajamo
+        </span>
+
+      </div>
+
+      <div class="hero-content">
+
+        <h1>
+          Lovćen Press donosi najvažnije vijesti iz Crne Gore i svijeta
+        </h1>
+
+        <p>
+          Dobrodošli na novi informativni portal. Ovdje će biti
+          najvažnije informacije, aktuelnosti i priče koje obilježavaju dan.
+        </p>
+
+        <div class="meta">
+          Danas • Lovćen Press
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         LATEST
+         ===================================================== -->
+
+    <div id="vijesti" class="section-heading">
+
+      <h2>
+        Najnovije
+      </h2>
+
+      <a href="#">
+        Sve vijesti →
+      </a>
+
+    </div>
+
+
+    <div class="latest-list">
+
+      <a href="#" class="latest-item">
+
+        <div class="latest-category">
+          Crna Gora
+        </div>
+
+        <h3>
+          Ovo je mjesto za najnoviju vijest dana
+        </h3>
+
+        <time>
+          prije 10 minuta
+        </time>
+
+      </a>
+
+
+      <a href="#" class="latest-item">
+
+        <div class="latest-category">
+          Vijesti
+        </div>
+
+        <h3>
+          Aktuelna dešavanja u fokusu javnosti
+        </h3>
+
+        <time>
+          prije 25 minuta
+        </time>
+
+      </a>
+
+
+      <a href="#" class="latest-item">
+
+        <div class="latest-category">
+          Svijet
+        </div>
+
+        <h3>
+          Najnovije informacije iz regiona i svijeta
+        </h3>
+
+        <time>
+          prije 40 minuta
+        </time>
+
+      </a>
+
+
+      <a href="#" class="latest-item">
+
+        <div class="latest-category">
+          Sport
+        </div>
+
+        <h3>
+          Sportske vijesti koje privlače pažnju
+        </h3>
+
+        <time>
+          prije 1 sat
+        </time>
+
+      </a>
+
+    </div>
+
+
+    <!-- REKLAMA -->
+
+    <div class="ad ad-small">
+      Reklamni prostor
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT LAYOUT
+         ===================================================== -->
+
+    <div class="content-layout">
+
+
+      <!-- ===================================================
+           MAIN COLUMN
+           =================================================== -->
+
+      <div class="main-column">
+
+
+        <!-- CRNA GORA -->
+
+        <section id="crna-gora" class="category-block">
+
+          <div class="category-title">
+
+            <h2>
+              Crna Gora
+            </h2>
+
+            <a href="#">
+              Više →
+            </a>
+
+          </div>
+
+
+          <div class="news-grid">
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Politika
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Aktuelne teme u fokusu crnogorske javnosti
+                </h3>
+
+                <p>
+                  Prostor za najvažnije političke i društvene informacije.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Društvo
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Priče iz života građana Crne Gore
+                </h3>
+
+                <p>
+                  Ljudi, događaji i teme koje mijenjaju svakodnevicu.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Hronika
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Najnovije informacije iz crnogorske hronike
+                </h3>
+
+                <p>
+                  Važne informacije uz odgovorno i provjereno izvještavanje.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- REKLAMA -->
+
+        <div class="ad ad-box">
+          Reklamni prostor 300 × 250
+        </div>
+
+
+        <!-- SVIJET -->
+
+        <section id="svijet" class="category-block">
+
+          <div class="category-title">
+
+            <h2>
+              Svijet
+            </h2>
+
+            <a href="#">
+              Više →
+            </a>
+
+          </div>
+
+
+          <article class="horizontal-card">
+
+            <div class="horizontal-image"></div>
+
+            <div>
+
+              <h3>
+                Najvažnija dešavanja u svijetu na jednom mjestu
+              </h3>
+
+              <p>
+                Svjetske vijesti i događaji koji mogu imati uticaj na region.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="horizontal-card">
+
+            <div class="horizontal-image"></div>
+
+            <div>
+
+              <h3>
+                Region i Evropa u centru pažnje
+              </h3>
+
+              <p>
+                Pregled najvažnijih međunarodnih tema.
+              </p>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+        <!-- SPORT -->
+
+        <section id="sport" class="category-block">
+
+          <div class="category-title">
+
+            <h2>
+              Sport
+            </h2>
+
+            <a href="#">
+              Više →
+            </a>
+
+          </div>
+
+
+          <div class="news-grid">
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Fudbal
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Najnovije sportske informacije
+                </h3>
+
+                <p>
+                  Rezultati, najave i priče sa sportskih terena.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Košarka
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Sve što treba znati iz svijeta košarke
+                </h3>
+
+                <p>
+                  Aktuelnosti, rezultati i izjave.
+                </p>
+
+              </div>
+
+            </article>
+
+
+            <article class="card">
+
+              <div class="card-image">
+
+                <span class="card-category">
+                  Ostalo
+                </span>
+
+              </div>
+
+              <div class="card-content">
+
+                <h3>
+                  Sportisti i događaji koji obilježavaju dan
+                </h3>
+
+                <p>
+                  Pregled sportskih tema.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- NEWSLETTER -->
+
+        <section class="newsletter">
+
+          <h3>
+            Budite u toku
+          </h3>
+
+          <p>
+            Kasnije možemo ovdje povezati newsletter
+            za najvažnije vijesti dana.
+          </p>
+
+          <form
+            class="newsletter-form"
+            onsubmit="return false;">
+
+            <input
+              type="email"
+              placeholder="Vaš email">
+
+            <button type="submit">
+              Prijava
+            </button>
+
+          </form>
+
+        </section>
+
+
+      </div>
+
+
+      <!-- ===================================================
+           SIDEBAR
+           =================================================== -->
+
+      <aside class="sidebar">
+
+
+        <!-- NAJČITANIJE -->
+
+        <div class="sidebar-box">
+
+          <h3 class="sidebar-title">
+            Najčitanije
+          </h3>
+
+          <div class="sidebar-list">
+
+            <a href="#">
+              1. Najvažnija priča dana
+            </a>
+
+            <a href="#">
+              2. Šta se trenutno dešava u Crnoj Gori
+            </a>
+
+            <a href="#">
+              3. Tema koja je privukla pažnju javnosti
+            </a>
+
+            <a href="#">
+              4. Najnovije informacije
+            </a>
+
+            <a href="#">
+              5. Sportska priča dana
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- REKLAMA -->
+
+        <div class="ad ad-box">
+          Reklamni prostor
+        </div>
+
+
+        <!-- KRATAK PREGLED -->
+
+        <div class="sidebar-box">
+
+          <h3 class="sidebar-title">
+            Lovćen Press
+          </h3>
+
+          <p style="font-size:13px;color:#6b7280;">
+            Mjesto za kratke informacije,
+            najave i druge sadržaje portala.
+          </p>
+
+        </div>
+
+
+      </aside>
+
+    </div>
+
+
   </main>
 
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
   <footer>
-    © 2026 Lovćen Press — Sva prava zadržana.
+
+    <div class="footer-inner">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          Lovćen Press
+        </h2>
+
+        <p>
+          Vijesti iz Crne Gore i svijeta.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#">
+          Naslovna
+        </a>
+
+        <a href="#vijesti">
+          Vijesti
+        </a>
+
+        <a href="#crna-gora">
+          Crna Gora
+        </a>
+
+        <a href="#svijet">
+          Svijet
+        </a>
+
+        <a href="#sport">
+          Sport
+        </a>
+
+      </div>
+
+
+      <div class="copyright">
+
+        © <span id="year"></span> Lovćen Press.
+        Sva prava zadržana.
+
+      </div>
+
+    </div>
+
   </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+    /* GODINA */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* DATUM */
+
+    const dateElement =
+      document.getElementById("currentDate");
+
+    const today =
+      new Date();
+
+    const options = {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    };
+
+    dateElement.textContent =
+      today.toLocaleDateString("sr-Latn-ME", options);
+
+
+    /* MOBILE MENU */
+
+    function toggleMenu() {
+
+      const menu =
+        document.getElementById("mobileMenu");
+
+      menu.classList.toggle("open");
+
+    }
+
+
+    function closeMenu() {
+
+      const menu =
+        document.getElementById("mobileMenu");
+
+      menu.classList.remove("open");
+
+    }
+
+
+    /* SEARCH */
+
+    function showSearch() {
+
+      const query =
+        prompt("Šta želite da pretražite?");
+
+      if (query) {
+
+        alert(
+          "Pretraga će biti aktivirana kada dodamo sistem članaka."
+        );
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
