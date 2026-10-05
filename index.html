@@ -83,6 +83,13 @@ font-weight:800;
 font-size:24px;
 letter-spacing:-.5px;
 }
+  .logo img{
+height:52px;
+width:auto;
+max-width:230px;
+object-fit:contain;
+display:block;
+}
 
 .logo-mark{
 width:46px;
@@ -506,6 +513,10 @@ font-size:13px;
 /* MOBILE */
 
 @media(max-width:900px){
+  .logo img{
+height:42px;
+max-width:190px;
+  }
 
 nav{
 display:none;
@@ -636,9 +647,8 @@ height:160px;
 
 <div class="container header-main">
 
-<a href="#" class="logo">
-<div class="logo-mark">L</div>
-<div>Lovćen <span>Press</span></div>
+<a href="#naslovna" class="logo">
+<img src="./Picsart_26-10-03_13-30-45-205.jpg" alt="Lovćen Press">
 </a>
 
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
